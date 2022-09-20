@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>나만의 페이지</title>
+    <script>
+            var ret =prompt("이름을 입력하세요","");
+            if(ret==null) { alert("다음에는 이름을 입력해주세요 ㅠㅠ");
+        
+            }
+            else if( ret == ""){ alert("다음에는 이름을 입력해주세요 ㅠㅠ");
+        
+                
+            }
+        
+        else { var ret = alert(ret + "님 어서 오세요");
+        document.write("환영합니다");
+        }
+    </script>
+</head>
+
+<style>
+header { width:100%; height:15%; background:orange;}
+section{ width:100%; height:20%; background-color: burlywood}
+footer{ position: fixed; bottom:10px; right:10px; color:gray;}
+#돈까스{ padding:20px; width:200px; }
+p{ font-size: 20px;}
+#요일 ul li{display: inline-block; padding: 1px 30px; list-style-type: none;}
+#요일 ul li a {text-decoration: none; color: white; font-size:22px;}
+#요일 ul li a:hover{color: aqua;}
+fieldset{width :80px;}
+@keyframes textSizeAnimation {  0% {font-size: 20px} 30%{font-size: 40px;}
+ 70%{font-size: 65px;}  90%{font-size: 80px;} }
+ span{animation-name: textSizeAnimation;
+ animation-duration: 3s;
+ animation-iteration-count: infinite;}
+</style>
+
+<body>
+
+<header>
+
+<h2>오늘 뭐 먹지?</h2>
+</header>
+<hr>
+
+<section id="요일">
+    <ul style="color:azure">이번 주 학식 메뉴 확인하러 가기!  ---&gt;
+        <li><a href="예제의 미디어 파일들/월요일.html"target="_balnk">월요일</a></li>
+        <li><a href="예제의 미디어 파일들/화요일.html"target="_balnk">화요일</a></li>
+        <li><a href="예제의 미디어 파일들/수요일.html"target="_balnk">수요일</a></li>
+        <li><a href="예제의 미디어 파일들/목요일.html"target="_balnk">목요일</a></li>
+        <li><a href="예제의 미디어 파일들/금요일.html"target="_balnk">금요일</a></li>
+    </ul>
+</section>
+
+<form>
+<fieldset>
+<legend>로그인</legend>
+학번:<input type="text" value="" placeholder="2020xxxxx"><br>
+비밀번호:<input type="password" value="" placeholder="xxxx!2020"><br>
+<input type="submit"value="로그인">
+</fieldset>
+</form>
+<br>
+
+<details id="detail">
+<summary><strong>내가 좋아하는 음식 Top 5</strong></summary>
+<ol type="1" ><li>돈까스
+<li>잔치국수
+<li>떡볶이
+<li>돼지국밥
+<li>카레</ol>
+</details>
+<br>
+
+<ul>
+    <li><p><strong>상명대학교 학식</strong></p></li> <a href = 
+    "https://www.inha.ac.kr/user/
+restaurantMenList.do?handle=2&siteId=kr&id=kr_060301000000"
+target="_blank">
+ <img id="돈까스" 
+    src="예제의 미디어 파일들/인하대학교 학식.png">
+    이곳을 클릭하여 상명대학교 학식 확인하기!!  </a></li>
+<br></ul>
+
+<ul><li><p><strong>저녁 메뉴 룰렛 돌리기!</strong></p></li></ul>
+<video src="예제의 미디어 파일들/저녁 메뉴 룰렛.mp4"
+controls autoplay muted loop></video>
+
+<span>눌러서 멈추세요~~</span>
+
+<footer> written by 윤재형</footer> 
+
+</body>
+</html>
