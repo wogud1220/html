@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>폼 테그들</title>
+</head>
+<body>
+    <h3>자기 소개서 작성 </h3>
+    <hr>
+    <form>이름 : <input type="text" value= ""> <br> 
+    암호 : <input type="password" value=""> 
+    자소서 : 
+<textarea cols="30" rows="10">이 곳에 자기소개서 작성</textarea>
+
+<hr>
+나라:<input type="text" list="countries"><br>
+<datalist id="countries">
+<option value="가나">
+<option value="스위스">
+<option value="캐나다">
+</datalist>
+<hr> 
+reset 버튼 : <input type="reset" value="reset">
+image 버튼 : <input type="image" src="예제의 미디어 파일들/button.png" alt = "">
+<button type="button">
+        <img src="예제의 미디어 파일들/button.png">
+
+</button>
+<hr>
+짜장면 <input type="checkbox" value="1">
+짬뽕 <input type="checkbox" value="2" checked>
+탕수육 <input type="checkbox" value="3">
+|
+ <input type="radio" name="China" value="1">
+   짜장면 <img src="예제의 미디어 파일들/jajang.png">
+   <input type="radio" name="China" value="2" checked>
+   짬뽕 <img src="예제의 미디어 파일들/jjambbong.png">
+   <input type="radio" name="China" value="3">
+   탕수육 <img src="예제의 미디어 파일들/tangsuyuk.png">
+<hr>
+<h4>컬러다이얼로그 색 선택</h4>
+색선택 <input type="color" value="#0000FF"
+onchange="document.body.style.color=this.value">
+<hr>
+date : <input type="date" value="">
+
+
+
+
+
+
+
+</form>
+
+    
+</body>
+</html>
