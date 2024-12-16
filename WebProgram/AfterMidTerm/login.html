@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css" />
+    <link rel="stylesheet" type="text/css" href="style-layout.css" />
+    <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+    <script>
+      // 로그인 버튼 활성화 및 로직
+      function enableLoginButton() {
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const loginButton = document.getElementById("login_button");
+
+        // ID와 비밀번호가 모두 입력된 경우 버튼 활성화
+        loginButton.disabled = !(username && password);
+      }
+
+      function handleLogin(event) {
+        event.preventDefault(); // 폼 제출 방지
+        const username = document.getElementById("username").value.trim();
+
+        if (!username) {
+          alert("아이디를 입력하세요.");
+          return;
+        }
+
+        // ID를 로컬 스토리지에 저장
+        localStorage.setItem("username", username);
+        alert(`${username}님 로그인 되었습니다.`);
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+      }
+
+      function handleOrder() {
+        const username = localStorage.getItem("username");
+        if (username) {
+          alert(`${username}님의 주문 내역입니다.`);
+        } else {
+          alert("로그인 후 주문 가능합니다.");
+        }
+      }
+    </script>
+  </head>
+  <body id="login">
+    <form onsubmit="handleLogin(event)">
+      <a href="#">회원가입</a>
+      <a href="#">아이디/비밀번호찾기</a>
+      <fieldset>
+        <span>사용자 아이디</span>
+        <input id="username" type="text" oninput="enableLoginButton()" /><br />
+        <span>비밀번호</span>
+        <input
+          id="password"
+          type="password"
+          oninput="enableLoginButton()"
+        /><br />
+        <span></span>
+        <input id="login_button" type="submit" value="로그인" disabled />
+        <input
+          id="reset"
+          type="button"
+          value="취소"
+          onclick="location.reload()"
+        />
+      </fieldset>
+    </form>
+
+    <div style="margin-top: 20px">
+      <button onclick="handleOrder()">주문하기</button>
+    </div>
+  </body>
+</html>

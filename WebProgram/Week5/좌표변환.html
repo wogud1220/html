@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style type="text/css">
+      #h5_trans {
+        transform: translate(30px, 30px);
+        border: thin solid;
+      }
+      #h5_scale {
+        transform: scale(3, 1.5);
+        border: thin solid;
+      }
+      #h5_rotate {
+        transform: rotate(45deg);
+        border: thin solid;
+      }
+      #h5_skew:hover {
+        transform: skew(30deg, 5deg);
+        border: thin solid;
+        transition: transform 4s;
+      }
+      td {
+        width: 160px;
+        height: 160px;
+        vertical-align: top;
+        border: thin solid;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td>
+          <p>translate(40px,40px);</p>
+          <img src="H5_logo.gif" id="h5_trans" width="54" height="66" />
+        </td>
+        <td>
+          <p>scale(3, 1.5);</p>
+          <img src="H5_logo.gif" id="h5_scale" width="54" height="66" />
+        </td>
+        <td>
+          <p>rotate(45deg);</p>
+          <img src="H5_logo.gif" id="h5_rotate" width="54" height="66" />
+        </td>
+        <td>
+          <p>skew(30deg,5deg);</p>
+          <img src="H5_logo.gif" id="h5_skew" width="54" height="66" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

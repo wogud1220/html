@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to 재형서점</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css" />
+    <link rel="stylesheet" type="text/css" href="style-layout.css" />
+    <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+    <script>
+      function printLocation() {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          document.getElementById("latitude-output").innerText = `위도: ${lat}`;
+          document.getElementById(
+            "longitude-output"
+          ).innerText = `경도: ${lon}`;
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a id="logo" href="main.html">재형 서점</a>
+        <span class="right" style="padding: 30px 10px">
+          <a href="login.html" target="display_area">로그인</a> |
+          <a href="signup.html" target="_blank">회원가입</a>
+        </span>
+      </header>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="domestic_books.html" target="display_area">국내도서</a>
+          </li>
+          <li>
+            <a href="foreign_books.html" target="display_area">해외번역도서</a>
+          </li>
+          <li><a href="music.html" target="display_area">음반/DVD</a></li>
+          <li class="right">
+            <a href="order.html" target="display_area">주문하기</a>
+          </li>
+        </ul>
+      </nav>
+
+      <hr />
+
+      <article class="left">
+        <iframe
+          name="display_area"
+          src="images/books.jpg"
+          width="600px"
+          height="500px"
+        ></iframe>
+      </article>
+
+      <aside class="right">
+        <button id="all" style="width: 85px" onclick="printAll()">전체</button
+        ><br />
+        <button
+          id="all"
+          style="width: 85px"
+          onclick="window.location.href='All_books.html'"
+        >
+          전체</button
+        ><br />
+        <button id="best" style="width: 85px" onclick="printBestSeller()">
+          베스트셀러</button
+        ><br />
+        <button id="recommend" style="width: 85px">추천도서</button><br />
+        <button id="memo" style="width: 85px" disabled hidden>메모하기</button
+        ><br />
+        <button id="location" style="width: 85px" onclick="printLocation()">
+          현재위치
+        </button>
+        <div
+          id="latitude-output"
+          style="margin-top: 10px; font-size: 11px"
+        ></div>
+        <div id="longitude-output" style="font-size: 11px"></div>
+      </aside>
+
+      <hr />
+
+      <footer>
+        <div id="copyright">
+          Copyright (c) 2016 SM Bookstore Inc. All rights reserved
+        </div>
+        <div id="SNS">
+          <a href="https://github.com/wogud1220" target="_blank">
+            <img src="./images/git.jpeg" height="37" alt="Git" />
+          </a>
+          <a href="http://facebook.com" target="_blank">
+            <img src="images/facebook.png" height="32" alt="Facebook" />
+          </a>
+          <a href="http://twitter.com" target="_blank">
+            <img src="images/twitter.png" height="32" alt="Twitter" />
+          </a>
+          <a href="http://plus.google.com" target="_blank">
+            <img
+              src="images/googleplus-icon.png"
+              height="32"
+              alt="Google Plus"
+            />
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

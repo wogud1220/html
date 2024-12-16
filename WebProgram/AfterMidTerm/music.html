@@ -1,0 +1,220 @@
+<!-- <!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title> Music and DVD </title>
+<link rel="stylesheet" type="text/css" href="style-size.css"/>
+<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+<body class="booklist musiclist aerialview">
+  <div class="head">음반/DVD</div>
+  <ul>
+    <li>
+      <img height="200"
+           src="http://peach.blender.org/wp-content/uploads/poster_rodents_small.jpg"/>
+      <br/>
+      Big Buck Bunny - 4 - Death Becomes Fur<br/>
+      <audio
+        src="http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4" controls>
+        Your browser does not support the audio tag.
+      </audio>
+    </li>
+    <li>
+      <img height="200"
+           src="http://www.sintel.org/wp-content/uploads/2010/05/title-Sintel.jpg"/>
+      <video height="200" src="http://media.w3.org/2010/05/sintel/trailer.mp4" controls>
+        Your browser does not support the video tag.
+      </video>
+    </li>
+  </ul>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Music and DVD</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css" />
+    <link rel="stylesheet" type="text/css" href="style-layout.css" />
+    <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+    <style>
+      .custom-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .progress-time {
+        margin-left: 10px;
+      }
+      .volume-control {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body class="booklist musiclist aerialview">
+    <div class="head">음반/DVD</div>
+    <ul>
+      <li>
+        <img
+          height="200"
+          src="http://peach.blender.org/wp-content/uploads/poster_rodents_small.jpg"
+        />
+        <br />
+        Big Buck Bunny - 4 - Death Becomes Fur<br />
+        <audio
+          id="custom-audio-1"
+          src="http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"
+        ></audio>
+        <div class="custom-controls">
+          <button id="play-pause-audio-1">재생</button>
+          <span id="audio-time-1">0:00 / 0:00</span>
+          <input
+            type="range"
+            id="audio-volume-slider-1"
+            class="volume-control"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
+        </div>
+      </li>
+      <li>
+        <img
+          height="200"
+          src="http://www.sintel.org/wp-content/uploads/2010/05/title-Sintel.jpg"
+        />
+        <video
+          id="custom-video"
+          height="200"
+          src="http://media.w3.org/2010/05/sintel/trailer.mp4"
+        ></video>
+        <div class="custom-controls">
+          <button id="play-pause-video">재생</button>
+          <span id="video-time">0:00 / 0:00</span>
+          <input
+            type="range"
+            id="volume-slider"
+            class="volume-control"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
+        </div>
+      </li>
+    </ul>
+    <script>
+      // 공통 시간 형식 함수
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+      }
+
+      // 오디오 제어
+      const audio = document.getElementById("custom-audio-1");
+      const playPauseAudioBtn = document.getElementById("play-pause-audio-1");
+      const audioTimeDisplay = document.getElementById("audio-time-1");
+      const audioVolumeSlider = document.ㅎgetElementById(
+        "audio-volume-slider-1"
+      );
+
+      // 시간 업데이트
+      function updateAudioTime() {
+        const currentTime = formatTime(audio.currentTime); // 현재 재생 시간
+        const duration = formatTime(audio.duration || 0); // 전체 재생 시간
+        audioTimeDisplay.textContent = `${currentTime} / ${duration}`;
+      }
+
+      // // 재생/일시 정지 버튼
+      // playPauseAudioBtn.addEventListener("click", () => {
+      //   if (audio.paused || audio.ended) {
+      //     audio.play();
+      //     playPauseAudioBtn.textContent = "일시 정지";
+      //   } else {
+      //     audio.pause();
+      //     playPauseAudioBtn.textContent = "재생";
+      //   }
+      // });
+      // 오디오 제어
+      playPauseAudioBtn.addEventListener("click", () => {
+        if (audio.paused || audio.ended) {
+          audio
+            .play()
+            .then(() => {
+              playPauseAudioBtn.textContent = "일시 정지";
+            })
+            .catch((error) => {
+              console.error("Audio play failed:", error);
+            });
+        } else {
+          audio.pause();
+          playPauseAudioBtn.textContent = "재생";
+        }
+      });
+
+      // 비디오 제어
+      playPauseVideoBtn.addEventListener("click", () => {
+        if (video.paused || video.ended) {
+          video
+            .play()
+            .then(() => {
+              playPauseVideoBtn.textContent = "일시 정지";
+            })
+            .catch((error) => {
+              console.error("Video play failed:", error);
+            });
+        } else {
+          video.pause();
+          playPauseVideoBtn.textContent = "재생";
+        }
+      });
+
+      // 볼륨 조절
+      audioVolumeSlider.addEventListener("input", (e) => {
+        audio.volume = e.target.value; // 슬라이더 값으로 볼륨 설정
+      });
+
+      // 재생 시간 업데이트 이벤트
+      audio.addEventListener("timeupdate", updateAudioTime); // 재생 시간 업데이트
+      audio.addEventListener("loadedmetadata", updateAudioTime); // 초기 재생 시간 설정
+
+      // 비디오 제어
+      const video = document.getElementById("custom-video");
+      const playPauseVideoBtn = document.getElementById("play-pause-video");
+      const videoTimeDisplay = document.getElementById("video-time");
+      const videoVolumeSlider = document.getElementById("volume-slider");
+
+      // 시간 업데이트
+      function updateVideoTime() {
+        const currentTime = formatTime(video.currentTime); // 현재 재생 시간
+        const duration = formatTime(video.duration || 0); // 전체 재생 시간
+        videoTimeDisplay.textContent = `${currentTime} / ${duration}`;
+      }
+
+      // 재생/일시 정지 버튼
+      playPauseVideoBtn.addEventListener("click", () => {
+        if (video.paused || video.ended) {
+          video.play();
+          playPauseVideoBtn.textContent = "일시 정지";
+        } else {
+          video.pause();
+          playPauseVideoBtn.textContent = "재생";
+        }
+      });
+
+      // 볼륨 조절
+      videoVolumeSlider.addEventListener("input", (e) => {
+        video.volume = e.target.value; // 슬라이더 값으로 볼륨 설정
+      });
+
+      // 재생 시간 업데이트 이벤트
+      video.addEventListener("timeupdate", updateVideoTime); // 재생 시간 업데이트
+      video.addEventListener("loadedmetadata", updateVideoTime); // 초기 재생 시간 설정
+    </script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Welcome to JG서점</title>
+<link rel="stylesheet" type="text/css" href="style-size.css"/>
+<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+<body>
+<div class="wrap">
+<header>
+    <a id="logo" href="main.html"> SM Bookstore </a>
+    <span class="right" style="padding: 30px 10px;">
+        <a href="login.html" target="display_area">로그인</a> |
+        <a href="signup.html" target="_blank">회원가입</a>
+    </span>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="domestic_books.html" target="display_area">국내도서</a></li>
+        <li><a href="foreign_books.html" target="display_area">해외번역도서</a></li>
+        <li><a href="music.html" target="display_area">음반/DVD</a></li>
+        <li class="right"><a href="order.html" target="display_area">주문하기</a></li>
+    </ul>
+</nav>
+
+<hr/>
+
+<article class="left">
+    <iframe name="display_area" src="images/books.jpg"
+            width="600px" height="500px"></iframe>
+</article>
+
+<aside class="right">
+    <button id="all" style="width:85px">전체</button><br/>
+    <button id="best" style="width:85px">베스트셀러</button><br/>
+    <button id="recommend" style="width:85px">추천도서</button><br/>
+    <button id="memo" style="width:85px;">메모하기</button><br/>
+    <button id="location" style="width:85px">현재위치</button>
+    <div id="coordinates" style="margin-top: 10px; height: 30px; font-size: 10px;"></div>
+</aside>
+
+<script>
+    document.getElementById('all').addEventListener('click', function() {
+        document.querySelector('iframe[name="display_area"]').src = 'all_books.html';
+    });
+
+    document.getElementById('best').addEventListener('click', function() {
+        document.querySelector('iframe[name="display_area"]').src = 'bestseller.html';
+    });
+
+    document.getElementById('recommend').addEventListener('click', function() {
+        document.querySelector('iframe[name="display_area"]').src = 'recommend.html';
+    });
+
+    document.getElementById('memo').style.display = 'none';
+
+    document.getElementById('location').addEventListener('click', function() {
+        const coordinatesDiv = document.getElementById('coordinates');
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const latitude = position.coords.latitude.toFixed(3);
+                    const longitude = position.coords.longitude.toFixed(3);
+                    coordinatesDiv.innerHTML = `위도: ${latitude}<br/>경도: ${longitude}`;
+                },
+                function(error) {
+                    coordinatesDiv.innerHTML = "오류!!";
+                }
+            );
+        } else {
+            coordinatesDiv.innerHTML = "오류!!";
+        }
+    });
+</script>
+
+<hr/>
+
+<footer>  
+   <div id="copyright">
+       Copyright (c) 2016 SM Bookstore Inc. All rights reserved
+   </div>
+   <div id="SNS">
+    <a href="https://github.com/magical-to" target="_blank">
+        <img src="images/github.png" height="32" alt="Github">
+    </a>
+       <a href="http://facebook.com" target="_blank">
+           <img src="images/facebook.png" height="32" alt="Facebook">
+       </a>
+       <a href="http://twitter.com" target="_blank">
+           <img src="images/twitter.png" height="32" alt="Twitter">
+       </a>
+       <a href="http://plus.google.com" target="_blank">
+           <img src="images/googleplus-icon.png" height="32" alt="Google Plus">
+       </a>
+    </div>
+</footer>
+</div>
+</body>
+</html>

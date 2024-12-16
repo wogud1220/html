@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week6</title>
+  </head>
+  <body>
+    <h3>다양한 입력 폼</h3>
+    <form method="get" action="form_app.js">
+      성명: <input type="text" name="person" /> <br />
+      성별:
+      <input type="radio" name="sex" id="male" value="male" />
+      <label for="male">남성</label>
+      <input type="radio" name="sex" id="female" value="female" />
+      <label for="female">여성</label><br />
+      직업:
+      <select name="job" size="1">
+        <option value="student">학생</option>
+        <option>회사원</option>
+        <option>공무원</option>
+        <option selected>기타</option>
+      </select>
+      <p>
+        구입희망분야(복수선택 가능)<br />
+        - 분야: <input type="checkbox" name="books" value="computer" />컴퓨터
+        <input type="checkbox" name="books" value="economy" />경제
+        <input type="checkbox" name="books" value="common" />상식<br />
+        비고: <br />
+        <textarea name="comments" rows="4" cols="40"></textarea>
+      </p>
+      <hr />
+
+      <input type="submit" value="신청" />
+      <input type="reset" value="취소" />
+    </form>
+    <form method="post" action="form_app.js">
+      <fieldset>
+        <legend>로그인</legend>
+        <label for="user_id">아이디 : </label>
+        <input type="text" name="id" size="20" id="user_id" />
+        <br />
+        <label for="user_pw">비밀번호 :</label>
+        <input type="password" name="pw" size="20" id="user_pw" />
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>통합 검색</legend>
+        <label for="book_name">도서명 : </label>
+        <input type="text" name="book_search" size="50" id="book_name" />
+        <br />검색범위 :
+        <input type="radio" name="s_type" value="keyword" id="keyword" />
+        <label for="keyword">키워드</label> … <br />자료유형 :
+        <input type="checkbox" name="d_type" value="all" />전체…
+      </fieldset>
+
+      <br />
+      …
+      <button type="submit">검색</button>
+      <button type="reset">지우기</button>
+
+      <br />
+      <hr />
+      <input type="submit" value="전송하기" /> &nbsp;
+      <input type="reset" value="초기화" /> &nbsp;
+      <input type="button" value="확인하기" onClick="alert('입력값 확인')" />
+      &nbsp;
+      <input type="image" src="flower.png" alt="전송 버튼" />
+      <br />
+      <hr />
+      <input type="file" name="file" />
+    </form>
+    <form>
+      <input type="email" name="email" />
+      <input type="submit" value="전송하기" />
+      Tel : <input type="tel" placeholder="00*-000*-0000"
+      pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" /*0~9까지 2~3자리-0~9까지
+      3~4자리-0~9까지 4자리*/ />
+      <input type="submit" value="전송하기" />
+    </form>
+  </body>
+</html>

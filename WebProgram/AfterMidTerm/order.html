@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Order Page</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css" />
+    <link rel="stylesheet" type="text/css" href="style-layout.css" />
+    <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+    <script>
+      // 주문내역 제출 함수
+      function submitOrder() {
+        const username = localStorage.getItem("username");
+
+        if (!username) {
+          alert("로그인 후 주문 가능합니다.");
+          return false; // 주문 중단
+        }
+        var rows = document.querySelectorAll("table tr");
+        var orderSummary = `<h4>${username}님의 주문내역입니다.</h4>`; // ID 출력
+        orderSummary += `<table border="1">
+          <tr>
+            <th>책 제목</th>
+            <th>가격</th>
+            <th>수량</th>
+            <th>합계</th>
+          </tr>`;
+        var totalSum = 0;
+
+        for (var i = 1; i < rows.length - 1; i++) {
+          var title = rows[i].querySelector("td:nth-child(1)").innerText; // 책 제목
+          var price = rows[i].querySelector("td:nth-child(2)").innerText; // 가격
+          var quantityInput = rows[i].querySelector("td:nth-child(3) input"); // 수량 필드
+          var sumInput = rows[i].querySelector("td:nth-child(4) input"); // 합계 필드
+          var quantity = parseInt(quantityInput.value) || 0; // 수량 가져오기
+          var sum = parseInt(sumInput.value.replace(/,/g, "")) || 0; // 합계 숫자화
+
+          if (quantity > 0) {
+            totalSum += sum; // 전체 합계에 추가
+            orderSummary += `
+              <tr>
+                <td>${title}</td>
+                <td>${price}</td>
+                <td>${quantity}</td>
+                <td>${sumInput.value} 원</td>
+              </tr>`;
+          }
+        }
+
+        orderSummary += `
+          <tr>
+            <td colspan="3" style="text-align: right; font-weight: bold;">총 합계</td>
+            <td>${totalSum.toLocaleString()} 원</td>
+          </tr>`;
+        orderSummary += `</table>`;
+
+        document.getElementById("order-summary").innerHTML = orderSummary;
+        return false; // 폼 제출 방지
+      }
+
+      // 초기화 함수
+      function resetPrice() {
+        var rows = document.querySelectorAll("table tr");
+        for (var i = 1; i < rows.length; i++) {
+          var quantityInput = rows[i].querySelector("td:nth-child(3) input");
+          var sumInput = rows[i].querySelector("td:nth-child(4) input");
+          if (quantityInput) quantityInput.value = 0; // 수량 초기화
+          if (sumInput) sumInput.value = 0; // 합계 초기화
+        }
+        document.getElementById("order-summary").innerHTML = ""; // 주문내역 초기화
+      }
+
+      // 합계 계산 함수
+      function calculatePrice() {
+        var price = [
+          27000, 21000, 28000, 24000, 27000, 29000, 25000, 30000, 35000, 32000,
+          30000, 27000,
+        ];
+        var rows = document.querySelectorAll("table tr");
+        var totalSum = 0;
+        var totalQuantity = 0;
+
+        for (var i = 1; i < rows.length - 1; i++) {
+          var quantityInput = rows[i].querySelector("td:nth-child(3) input");
+          var sumInput = rows[i].querySelector("td:nth-child(4) input");
+          var quantity = parseInt(quantityInput.value) || 0;
+          var sum = price[i - 1] * quantity;
+
+          sumInput.value = sum.toLocaleString();
+          totalSum += sum;
+          totalQuantity += quantity;
+        }
+
+        var totalQuantityInput = rows[rows.length - 1].querySelector(
+          "td:nth-child(3) input"
+        );
+        var totalSumInput = rows[rows.length - 1].querySelector(
+          "td:nth-child(4) input"
+        );
+
+        totalQuantityInput.value = totalQuantity;
+        totalSumInput.value = totalSum.toLocaleString();
+      }
+    </script>
+  </head>
+  <body id="order">
+    <div class="head">서적 주문 양식</div>
+    <form onsubmit="return submitOrder()">
+      <p>주문서</p>
+      <table>
+        <tr>
+          <th>책 제목</th>
+          <th>가격</th>
+          <th>수량</th>
+          <th>합계</th>
+        </tr>
+        <tr>
+          <td>컴퓨터와 IT기술의 이해 [개정판-2판]</td>
+          <td>27,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>소셜미디어의 이해와 활용</td>
+          <td>21,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>비즈니스 정보 시스템</td>
+          <td>28,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+
+        <tr>
+          <td>(알기 쉬운) 알고리즘</td>
+          <td>24,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+
+        <tr>
+          <td>선형대수학 Express</td>
+          <td>27,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+
+        <tr>
+          <td>루비 프로그래밍 언어</td>
+          <td>29,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+
+        <tr>
+          <td>멀티 미디어 배움터 2.0</td>
+          <td>25,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>네트워크 보안 에센셜(4판)</td>
+          <td>30,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>회로 이론</td>
+          <td>35,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>Big Java</td>
+          <td>32,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>경영학의 이해</td>
+          <td>30,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+        <tr>
+          <td>컴퓨터 배움터</td>
+          <td>27,000원</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+
+        <tr>
+          <td>합계</td>
+          <td>&nbsp;</td>
+          <td><input type="text" size="2" value="0" /></td>
+          <td><input type="text" size="6" value="0" /> 원</td>
+        </tr>
+      </table>
+      <br />
+      <input type="button" value="합계계산" onclick="calculatePrice()" />
+      <input type="button" value="초기화" onclick="resetPrice()" />
+      <input type="submit" value="주문하기" />
+    </form>
+    <h3>주문내역</h3>
+    <div id="order-summary"></div>
+  </body>
+</html>

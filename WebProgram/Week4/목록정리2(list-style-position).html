@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      ul.outside-list {
+        list-style-position: outside;
+      }
+      ul.inside-list {
+        list-style-position: inside;
+      }
+      li.usa {
+        list-style-image: url("flag_usa.gif");
+      }
+      li.kor {
+        list-style-image: url("flag_kor.gif");
+      }
+      p {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>과목별 추천도서 목록</h3>
+    <ul class="outside-list">
+      <p>IT기술의 이해</p>
+      <li class="kor">최윤철, 임순범, 한탁돈 공저, 컴퓨터와 IT 기술의 이해</li>
+      <li class="usa">
+        D. Morley, C. Parker, Understanding Computers 15th Ed.
+      </li>
+      <li class="usa">G. Shelly, M. Vermaat, Discovering Computers</li>
+    </ul>
+    <ul class="inside-list">
+      <p>웹프로그래밍</p>
+      <li class="kor">임순범, 박희민 공저, HTML5 웹프로그래밍 입문</li>
+      <li class="kor">최윤철, 임순범 공저, 소셜미디어 시대의 인터넷넷활용</li>
+      <li class="renew">B. McLaughlin, What Is HTML5? (신규)</li>
+    </ul>
+    <img src="./image.png" />
+  </body>
+</html>

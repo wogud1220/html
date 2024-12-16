@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style type="text/css">
+      #title:hover {
+        border: thick double blue;
+        padding: 4px;
+        background-color: yellow;
+        font-size: xx-large;
+        transition: border 4s, background-color 8s;
+      }
+      #h5_logo {
+        position: absolute;
+        top: 10px;
+        right: 60px;
+      }
+      #h5_logo:hover {
+        border: thin solid red;
+        width: 108px;
+        height: 132px;
+        transition: width 4s;
+      }
+      #intro_text {
+        position: relative;
+        left: 10%;
+        width: 60%;
+        padding: 5px;
+        border: medium double black;
+        border-radius: 10px;
+        box-shadow: 8px 8px 40px 10px blue;
+      }
+      #w3c_float {
+        float: right;
+        border: thin solid black;
+        padding: 5px;
+        border-top-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        box-shadow: 2px 2px 4px 4px green inset;
+        /*가로 세로 시작위치, 번짐 정도와 크기, 색상, 그림자 진행 방향*/
+      }
+    </style>
+  </head>
+  <body>
+    <h3>5.5 새로운 문서 표준 <span id="title">HTML5</span></h3>
+    <img src="H5_logo.gif" id="h5_logo" width="54" height="66" />
+    <p>
+      현재 W3C에서 표준안 개발을 하고 있는 HTML5는 차세대 웹문서 ...(중략)...
+    </p>
+    <h3>5.5 새로운 문서 표준 HTML5</h3>
+    <img src="W3C_logo.gif" id="w3c_float" width="72" height="40" />
+    <p id="intro_text">
+      현재 W3C에서 표준안 개발을 하고 있는 HTML5는 차세대 웹문서 표준안으로 많은
+      관심이 집중되고 있다. 특히, 표준안 개발에 ...(중략)...
+    </p>
+  </body>
+</html>

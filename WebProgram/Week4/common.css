@@ -1,0 +1,14 @@
+h3 {
+  font-style: italic;
+} /* h3 폰트를 이탤릭으로 */
+p {
+  font-size: 10pt;
+} /* p의 글자를 한 크기 작게 */
+
+a:link {
+  color: blue;
+}
+a:visited {
+  color: red;
+  text-decoration: line-through;
+} /* 방문한 링크의 색을 빨간색으로 */
